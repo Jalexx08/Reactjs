@@ -1,10 +1,10 @@
-//* Creating an abstract class Observable
+//* Creating an abstract class (Observable class)
 class Observable {
 	constructor() {
 		this.observers = [];
 	}
 
-	//* Method to add all our observers
+	//* Method to add to all our observers
 	subscribe(notifyingClass) {
 		this.observers.push(notifyingClass);
 	}
@@ -16,6 +16,7 @@ class Observable {
 		);
 	}
 
+	//* Method to call to all our observers
 	notifyObservable(event) {
 		this.observers.forEach((observer) => {
 			observer.notify(event);
@@ -23,7 +24,7 @@ class Observable {
 	}
 }
 
-//* Child class of Observable class
+//* Creating our observer
 class NumberExample extends Observable {
 	constructor() {
 		super();
@@ -53,7 +54,7 @@ class NumberExampleEnglish {
 let numberExample = new NumberExample();
 
 numberExample.subscribe(new NumberExampleSpanish());
-// numberExample.subscribe( new NumberExampleEnglish());
+numberExample.subscribe(new NumberExampleEnglish());
 
 numberExample.increment();
 numberExample.increment();
