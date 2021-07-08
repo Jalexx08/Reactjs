@@ -2,18 +2,13 @@ const { HeartRate } = require('./observable/observable');
 
 class BeatsOne {
 	notify(event) {
-		switch (event.beat) {
-			case event.beat < 50:
-				console.log('Warning, bradycardia ');
-				break;
-			case event.beat > 100:
-				console.log('Warning, tachycardia ');
-				break;
-
-			default:
-				console.log('you are healthy!');
-				
-				break;
+		const { beat } = event;
+		if (beat < 50) {
+			console.log('Warning, bradycardia ');
+		} else if (beat > 100) {
+			console.log('Warning, tachycardia ');
+		} else {
+			console.log('you are healthy!');
 		}
 	}
 }

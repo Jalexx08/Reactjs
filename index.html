@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Recetas</title>
+	</head>
+	<body>
+		<div id="root"></div>
+
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<script>
+			// let h1Element = React.createElement('h1', { id: 'text',key:'carne' }, 'Carne asada');
+			// let h2Element = React.createElement('h2', { id: 'text2', key:'pollo' }, 'Pollo asado');
+			// ReactDOM.render([h1Element, h2Element], document.getElementById('root') );
+
+			// let elements = React.createElement(
+			// 	'section',
+			// 	{ id: 'receta' },
+			// 	React.createElement('h1', null, 'Receta'),
+			// 	React.createElement(
+			// 		'ul',
+			// 		{ className: 'ingredientes' },
+			// 		React.createElement('li', {key:'ingrediente1'}, 'ingrediente1'),
+			// 		React.createElement('li', {key:'ingrediente2'}, 'ingrediente2'),
+			// 		React.createElement('li', {key:'ingrediente3'}, 'ingrediente3'),
+			// 		React.createElement('li', {key:'ingrediente4'}, 'ingrediente4')
+			// 	),
+			// 	React.createElement(
+			// 		'section',
+			// 		{ className: 'instrucciones' },
+			// 		React.createElement('h2', null, 'Instrucciones'),
+			// 		React.createElement('p', null, 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años')
+			// 	)
+			// );
+
+			// ReactDOM.render(elements, document.getElementById('root'));
+			const arrayIngredientes = [
+				'ingrediente1',
+				'ingrediente2',
+				'ingrediente3',
+				'ingrediente4',
+				'ingrediente5',
+			];
+			let elements = React.createElement(
+				'section',
+				{ id: 'receta' },
+				React.createElement('h1', null, 'Receta'),
+				React.createElement(
+					'ul',
+					{ className: 'ingredientes' },
+                    arrayIngredientes.map( (ingrediente, i) => React.createElement('li',{key: i}, ingrediente))
+				),
+				React.createElement(
+					'section',
+					{ className: 'instrucciones' },
+					React.createElement('h2', null, 'Instrucciones'),
+					React.createElement(
+						'p',
+						null,
+						'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años'
+					)
+				)
+			);
+
+			ReactDOM.render(elements, document.getElementById('root'));
+		</script>
+	</body>
+</html>

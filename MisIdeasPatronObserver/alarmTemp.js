@@ -2,7 +2,12 @@ const { AlarmTemp } = require('./observable/observable');
 
 class Test1 {
 	notify(event) {
-		console.log('Temperature 1 is: ' + event.temp);
+		const { temp } = event;
+		if (temp >= 10 && temp <= 18) {
+			console.log('Temperature 1 is OK');
+		} else {
+			console.log('Danger!!!!');
+		}
 	}
 }
 class Test2 {
@@ -14,7 +19,9 @@ class Test2 {
 let weather = new AlarmTemp();
 
 weather.subscribe(new Test1());
-weather.subscribe( new Test2());
+weather.subscribe(new Test2());
 
+weather.alarm();
+weather.alarm();
 weather.alarm();
 weather.alarm();

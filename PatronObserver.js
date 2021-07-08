@@ -4,19 +4,19 @@ class Observable {
 		this.observers = [];
 	}
 
-	//* Method to add to all our observers
+	//* Method adding all our observers(subscribers)
 	subscribe(notifyingClass) {
 		this.observers.push(notifyingClass);
 	}
 
-	//* Method to remove observers
+	//* Method removing observers(subscribers)
 	unsubscribe(notifyingClass) {
 		this.observers = this.observers.filter(
 			(observer) => observer instanceof notifyingClass !== true
 		);
 	}
 
-	//* Method to call to all our observers
+	//* Method calling all our observers(subscribers)
 	notifyObservable(event) {
 		this.observers.forEach((observer) => {
 			observer.notify(event);
@@ -24,10 +24,10 @@ class Observable {
 	}
 }
 
-//* Creating our observer
+//* Creating our observable (Subject)
 class NumberExample extends Observable {
 	constructor() {
-		super();
+		super(); 
 		this.value = 0;
 	}
 
@@ -37,7 +37,7 @@ class NumberExample extends Observable {
 	}
 }
 
-//* Creating ours observers
+//* Creating ours observers class(subscribers)
 class NumberExampleSpanish {
 	notify(event) {
 		console.log(`El nuevo número es: ${event.value}`);
@@ -50,11 +50,13 @@ class NumberExampleEnglish {
 	}
 }
 
-//* Running our Observable
+//* Instancing our subject
 let numberExample = new NumberExample();
 
+//* Defining our subscribers to the subject.
 numberExample.subscribe(new NumberExampleSpanish());
 numberExample.subscribe(new NumberExampleEnglish());
 
+//* Listening changes from subject's method increment.
 numberExample.increment();
 numberExample.increment();

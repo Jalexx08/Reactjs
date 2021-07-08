@@ -10,7 +10,6 @@ class Observable {
 	unsubscribe(notifyingClass) {
 		this.observers = this.observers.filter(
 			(observer) => observer instanceof notifyingClass !== true
-			
 		);
 	}
 
@@ -28,8 +27,8 @@ class AlarmTemp extends Observable {
 	}
 
 	alarm() {
-        this.temp = Math.random() * 40;
-        this.notifyObservable(this);
+		this.temp = Math.random() * 40;
+		this.notifyObservable(this);
 	}
 }
 class HeartRate extends Observable {
@@ -39,13 +38,12 @@ class HeartRate extends Observable {
 	}
 
 	heartbeat() {
-
-        this.beat = Math.random() * 200;
-        this.notifyObservable(this);
+		this.beat = Math.random() * 200;
+		this.notifyObservable(this);
 	}
 }
 
 module.exports = {
 	AlarmTemp,
-	HeartRate
+	HeartRate,
 };
