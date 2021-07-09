@@ -11,7 +11,8 @@
 
 		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-		<script>
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/babel">
 			// let h1Element = React.createElement('h1', { id: 'text',key:'carne' }, 'Carne asada');
 			// let h2Element = React.createElement('h2', { id: 'text2', key:'pollo' }, 'Pollo asado');
 			// ReactDOM.render([h1Element, h2Element], document.getElementById('root') );
@@ -37,35 +38,172 @@
 			// );
 
 			// ReactDOM.render(elements, document.getElementById('root'));
-			const arrayIngredientes = [
-				'ingrediente1',
-				'ingrediente2',
-				'ingrediente3',
-				'ingrediente4',
-				'ingrediente5',
-			];
-			let elements = React.createElement(
-				'section',
-				{ id: 'receta' },
-				React.createElement('h1', null, 'Receta'),
-				React.createElement(
-					'ul',
-					{ className: 'ingredientes' },
-                    arrayIngredientes.map( (ingrediente, i) => React.createElement('li',{key: i}, ingrediente))
-				),
-				React.createElement(
-					'section',
-					{ className: 'instrucciones' },
-					React.createElement('h2', null, 'Instrucciones'),
-					React.createElement(
-						'p',
-						null,
-						'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años'
-					)
-				)
-			);
+			/*
+							React  mejorado con el map
+				*/
 
-			ReactDOM.render(elements, document.getElementById('root'));
+			// const arrayIngredientes = [
+			// 	'ingrediente1',
+			// 	'ingrediente2',
+			// 	'ingrediente3',
+			// 	'ingrediente4',
+			// 	'ingrediente5',
+			// ];
+			// let elements = React.createElement(
+			// 	'section',
+			// 	{ id: 'receta' },
+			// 	React.createElement('h1', null, 'Receta'),
+			// 	React.createElement(
+			// 		'ul',
+			// 		{ className: 'ingredientes' },
+			//         arrayIngredientes.map( (ingrediente, i) => React.createElement('li',{key: i}, ingrediente))
+			// 	),
+			// 	React.createElement(
+			// 		'section',
+			// 		{ className: 'instrucciones' },
+			// 		React.createElement('h2', null, 'Instrucciones'),
+			// 		React.createElement(
+			// 			'p',
+			// 			null,
+			// 			'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años'
+			// 		)
+			// 	)
+			// );
+
+			// ReactDOM.render(elements, document.getElementById('root'));
+
+			//* Crear Componente de forma antigua
+
+			// const ingredientList = React.creatClass({
+			// 	displayName: 'Lista de ingredeintes',
+			// 	render() {
+			// 		return React.createElement(
+			// 			'ul',
+			// 			{ className: 'ingredientes' },
+			// 			React.createElement('li', { key: 1 }, 'ingrediente1')
+			// 		);
+			// 	},
+			// });
+
+			//* Crear componente - Evolución de la forma antigua
+
+			// class LsistaIngrediente extends React.Component {
+			// 	render() {
+			// 		return React.createElement(
+			// 			'ul',
+			// 			{ className: 'ingredientes' },
+			// 			React.createElement('li', { key: 1 }, 'ingrediente1')
+			// 		);
+			// 	}
+			// }
+
+			//* Crear componente - Forma actual
+
+			// function LsistaIngrediente() {
+			// 	return React.createElement(
+			// 		'ul',
+			// 		{ className: 'ingredientes' },
+			// 		React.createElement('li', { key: 1 }, 'ingrediente1')
+			// 	);
+			// }
+
+			//* Component con jsx
+
+			// function ListaIngredientes() {
+			// 	return (
+			// 		<>
+			// 			<ul>
+			// 				<li> Prueba</li>
+			// 			</ul>
+			// 		</>
+			// 	);
+			// }
+
+			// ReactDOM.render(<ListaIngredientes />, document.getElementById('root'));
+
+			//* Aplicación completa con jsx
+
+			const data = [
+				{
+					name: 'Baked Salmon',
+					ingredients: [
+						{ name: 'Salmon', amount: 1, measurement: 'l lb' },
+						{ name: 'Pine Nuts', amount: 1, measurement: 'cup' },
+						{ name: 'Butter Lettuce', amount: 2, measurement: 'cups' },
+						{ name: 'Yellow Squash', amount: 1, measurement: 'med' },
+						{ name: 'Olive Oil', amount: 0.5, measurement: 'cup' },
+						{ name: 'Garlic', amount: 3, measurement: 'cloves' },
+					],
+					steps: [
+						'Preheat the oven to 350 degrees.',
+						'Spread the olive oil around a glass baking dish.',
+						'Add the yellow squash and place in the oven for 30 mins.',
+						'Add the salmon, garlic, and pine nuts to the dish.',
+						'Bake for 15 minutes.',
+						'Remove from oven. Add the lettuce and serve.',
+					],
+				},
+				{
+					name: 'Fish Tacos',
+					ingredients: [
+						{ name: 'Whitefish', amount: 1, measurement: 'l lb' },
+						{ name: 'Cheese', amount: 1, measurement: 'cup' },
+						{ name: 'Iceberg Lettuce', amount: 2, measurement: 'cups' },
+						{ name: 'Tomatoes', amount: 2, measurement: 'large' },
+						{ name: 'Tortillas', amount: 3, measurement: 'med' },
+					],
+					steps: [
+						'Cook the fish on the grill until hot.',
+						'Place the fish on the 3 tortillas.',
+						'Top them with lettuce, tomatoes, and cheese.',
+					],
+				},
+			];
+
+			const Menu = (props) => {
+				return (
+					<article>
+						<header>
+							<h1>{props.name}</h1>
+						</header>
+						<div className="recetas">
+							{props.recetas.map((receta, i) => (
+								<Recetas
+									key={i}
+									{...receta }
+									
+								/>
+							))}
+						</div>
+					</article>
+				);
+			};
+
+			const Recetas = (props) => {
+				return (
+					<section>
+						<h1>{props.name}</h1>
+						<ul className="ingredeientes">
+							{props.ingredients.map((ingrediente, i) => (
+								<li  key={i}>
+									{ingrediente.name}
+								</li>
+							))}
+						</ul>
+						<section>
+							<h2>Instrucciones</h2>
+							{props.steps.map((paso, i) => (
+								<p key={paso}>{paso}</p>
+							))}
+						</section>
+					</section>
+				);
+			};
+
+			ReactDOM.render(
+				<Menu recetas={data} titulo="Deliciosas recetas" />,
+				document.getElementById('root')
+			);
 		</script>
 	</body>
 </html>
