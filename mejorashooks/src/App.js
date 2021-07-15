@@ -1,34 +1,23 @@
-import logo from './logo.svg';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import GitUser from './GitHubUser';
 
-import './App.css';
-
-function App() {
-	const [val, setVal] = useState('');
-	const [frase, setFrase] = useState('Frase de ejemplo');
-	// const [checked, setChecked] = useState(false);
-
-	const crearFrase = () => {
-		setFrase(val);
-		setVal = '';
+const App = () => {
+	const [searchUser, setSearchUser] = useState('');
+	const handleChange = (event) => {
+		setSearchUser(event.target.value);
 	};
 
-	useEffect(() => {
-		// alert(`Checked: ${checked.toString()}`);
-	}, []);
-
 	return (
-		<>
-			<label>Mi frase favorita</label>
-			<input type="checkbox" onChange={(e) =>setVal(e.target.value)} placeholder={frase} />
-		</>
-		// 	<input
-		// 		type="checkbox"
-		// 		onChange={() => setChecked((checked) => !checked)}
-		// 	/>
-		// 	{checked ? 'Checked' : 'No checked'}
-		// </>
+		<div>
+			<input
+				type="text"
+				placeholder="Search"
+				value={searchUser}
+				onChange={handleChange}
+			/>
+			<GitUser user={searchUser} />
+		</div>
 	);
-}
+};
 
 export default App;
